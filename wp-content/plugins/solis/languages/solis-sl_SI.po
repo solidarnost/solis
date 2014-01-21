@@ -1,0 +1,227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Solis WP plugin 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-01-21 01:32+0100\n"
+"PO-Revision-Date: 2014-01-21 01:33+0100\n"
+"Last-Translator: \n"
+"Language-Team: Solidarnost.si translation team <samo.penic@solidarnost.si>\n"
+"Language: Slovenian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.4\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n"
+"%100==4 ? 3 : 0);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+
+#: solis.php:55
+msgid "Topic"
+msgstr "Področje"
+
+#: solis.php:56
+msgid "Add new topic"
+msgstr "Dodaj novo področje"
+
+#: solis.php:57
+msgid "New topic"
+msgstr "Novo področje"
+
+#: solis.php:75
+msgid "Tags"
+msgstr "Značke"
+
+#: solis.php:76
+msgid "Add new tag"
+msgstr "Dodaj novo značko"
+
+#: solis.php:77
+msgid "New tag"
+msgstr "Nova značka"
+
+#: solis.php:93 solis.php:95
+msgid "Proposals"
+msgstr "Predlogi"
+
+#: solis.php:94
+msgid "Proposal"
+msgstr "Predlog"
+
+#: solis.php:96
+msgid "Parent proposal"
+msgstr "Starševski predlog"
+
+#: solis.php:97
+msgid "All proposals"
+msgstr "Vsi predlogi"
+
+#: solis.php:98
+msgid "View proposal"
+msgstr "Poglej predlog"
+
+#: solis.php:99
+msgid "Add new proposal"
+msgstr "Dodaj nov predlog"
+
+#: solis.php:100
+msgid "Add new"
+msgstr "Nov predlog"
+
+#: solis.php:101
+msgid "Edit proposal"
+msgstr "Uredi predlog"
+
+#: solis.php:102
+msgid "Update proposal"
+msgstr "Posodobi predlog"
+
+#: solis.php:103
+msgid "Search proposals"
+msgstr "Išči med predlogi"
+
+#: solis.php:104
+msgid "Proposal not found"
+msgstr "Predlog ni najden"
+
+#: solis.php:105
+msgid "Proposal not found in trash"
+msgstr "Predlog ni najden v smeteh"
+
+#: solis.php:114
+msgid "proposal"
+msgstr "predlog"
+
+#: solis.php:115
+msgid "Proposal for discussion"
+msgstr "Predlog za razpravo"
+
+#: solis.php:192
+msgid "Only logged in users can post arguments to posts!"
+msgstr "Na predloge lahko podajo argumente le prijavljeni uporabniki"
+
+#: solis.php:212 solis.php:221
+msgid "You are not allowed to add new proposal on given topic!"
+msgstr "Ne morete dodati novega predloga na izbranem področju!"
+
+#: solis.php:265 solis.php:330
+msgid "Title of new proposal"
+msgstr "Naslov predloga"
+
+#: solis.php:268 solis.php:333
+msgid "Detailed description of proposal"
+msgstr "Podroben opis predloga"
+
+#: solis.php:271 solis.php:336
+msgid "Publish"
+msgstr "Objavi"
+
+#: solis.php:342 solis.php:408
+msgid "Supports"
+msgstr "Podpira"
+
+#: solis.php:357 solis.php:423
+msgid "Don't support"
+msgstr "Ne podpira"
+
+#: solis.php:390 solis.php:397 solis.php:400 solis.php:456 solis.php:463
+#: solis.php:466
+msgid "I support"
+msgstr "Podpiram"
+
+#: solis.php:391 solis.php:398 solis.php:401 solis.php:457 solis.php:464
+#: solis.php:467
+msgid "I don't support"
+msgstr "Ne podpiram"
+
+#: solis.php:406 solis.php:472
+msgid "Change vote"
+msgstr "Spremeni glas"
+
+#: solis.php:459 solis.php:525 solis.php:527
+msgid "Vote is invalid!"
+msgstr "Glas ni veljaven!"
+
+#: solis.php:474 solis.php:540 solis.php:542
+msgid "You are voting too fast!"
+msgstr "Glasujete prehitro!"
+
+#: solis.php:482 solis.php:548 solis.php:550
+msgid ""
+"System error. User vote count too large. Database could be damaged. Contact "
+"administrator!"
+msgstr ""
+"Napaka v sistemu. Zabeleženo število glasov je napačno, kar lahko pomeni, da "
+"je pokvarjena baza podatkov. Kontaktirajte administratorja!"
+
+#: solis.php:489 solis.php:555 solis.php:557
+msgid "User already voted!"
+msgstr "Uporabnik je že glasoval!"
+
+#: solis.php:503 solis.php:569 solis.php:571
+msgid "You can vote again!"
+msgstr "Glasujte ponovno"
+
+#: solis.php:505 solis.php:571 solis.php:573
+msgid "Thank you for your vote!"
+msgstr "Hvala za vaš glas!"
+
+#: solis.php:512 solis.php:578 solis.php:580
+msgid "You need to login to vote!"
+msgstr "Za glasovanje se morate prijaviti!"
+
+#: user_roles.php:31
+msgid "Proposal author"
+msgstr "Avtor predlogov"
+
+#: user_roles.php:40
+msgid "Proposal moderator"
+msgstr "Moderator predlogov"
+
+#: solis.php:611 solis.php:613
+msgid "Password changed successfully"
+msgstr "Geslo je bilo uspešno spremenjeno."
+
+#: solis.php:617 solis.php:619
+msgid "Old Password"
+msgstr "Staro geslo"
+
+#: solis.php:621 solis.php:623
+msgid "New Password"
+msgstr "Novo geslo"
+
+#: solis.php:625 solis.php:627
+msgid "Password Confirm"
+msgstr "Potrdi geslo"
+
+#: solis.php:632 solis.php:634
+msgid "Change Password"
+msgstr "Spremeni geslo"
+
+#: solis.php:665 solis.php:667
+msgid "Old password incorrect"
+msgstr "Staro geslo ni pravilno."
+
+#: solis.php:669 solis.php:671
+msgid "New password is the same as the old one."
+msgstr "Novo geslo je enako staremu."
+
+#: solis.php:674 solis.php:676
+msgid "Please enter a password, and confirm it"
+msgstr "Prosim vnesite novo geslo in ga potrdite."
+
+#: solis.php:678 solis.php:680
+msgid "Passwords do not match"
+msgstr "Gesli se ne ujemata."
+
+#: solis.php:708 solis.php:710
+msgid "Error"
+msgstr "Napaka"
+
+#: solis.php:806
+msgid "Sign out"
+msgstr "Odjava"

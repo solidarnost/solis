@@ -1,0 +1,18 @@
+find . -iname "*.php" > /tmp/solis_file_list.txt
+ 
+# new template
+xgettext --from-code=utf-8 -d solis  -f /tmp/solis_file_list.txt --keyword=__ --keyword=_e --keyword=_n --keyword=_x --keyword=_ex -o languages/solis_plugin.pot
+ 
+ 
+# update template
+xgettext --from-code=utf-8 -d solis -j -f /tmp/solis_file_list.txt --keyword=__ --keyword=_e --keyword=_n --keyword=_x --keyword=_ex -o languages/solis_plugin.pot
+
+
+How to translate:
+http://blog.lingohub.com/developers/2013/07/php-internationalization-with-gettext-tutorial/
+
+Plural forms slovenian:
+nplurals=4; plural=(n%100==1 ? 1 : n%100==2 ? 2 : n%100==3 || n%100==4 ? 3 : 0);
+
+
+must be named: solis-locale.po
