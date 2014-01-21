@@ -8,6 +8,9 @@ Plugin that helps with decision making by making proposals, allowing users to co
 
 The file provides plugin and corresponding theme. Some functionality is not guaranteed with any theme. Theme provided is derived (child) theme from twentyfourteen.
 
+Many thanks to people from danesjenovdan.si, who helped us with ideas. Our implementation is based on their design, but code is totally rewrited.
+
+
 Requirement:
 ------------
 
