@@ -231,7 +231,8 @@ function solis_editproposal_form(){
 		_e("You are not allowed to edit this proposal!", 'solis');
 		die();
 	}
-	editpost_draw_form($_REQUEST['postID']);
+	$edit_array=editpost_draw_form($_REQUEST['postID']);
+	echo json_encode($edit_array);
 	die();
 }
 add_action("wp_ajax_solis_editproposal_form", "solis_editproposal_form");
@@ -365,19 +366,18 @@ function newpost_draw_form($category){
 /** Function draws form when user requests edit of a ``proposal''. It should be called by AJAX call from the frontend */
 function editpost_draw_form($postID){
 
-?>
-<form id="edit_post" name="edit_post" method="post" action="">
-<textarea id="description" tabindex="101" name="proposaldescription" rows="10" columns="50" required><?php echo get_post_field('post_content', $postID); ?></textarea></p>
+$begin_form='<form id="edit_post" name="edit_post" method="post" action="">';
+$title_html='<p><input type="text" id="title" tabindex="100" size="50" name="proposaltitle" required value="'.get_post_field('post_title', $postID).'"/></p>';
 
-<p align="right"><input type="submit" value="<?php _e('Submit') ?>" tabindex="102" id="submit" name="submit" /></p>
+$post_html='<textarea id="description" tabindex="101" name="proposaldescription" rows="10" columns="50" required>'. get_post_field('post_content', $postID).'</textarea></p>
+
+<p align="right"><input type="submit" value="'.__('Submit').'" tabindex="102" id="submit" name="submit" /></p>
 
 <input type="hidden" name="proposalpost_type" id="post_type" value="proposal" />
-<input type="hidden" name="postID" id="postID" value="<?php echo $postID; ?>" />
-<input type="hidden" name="action" value="solis-editpost" />
-<?php wp_nonce_field( 'solis-edit-post' ); ?>
-</form>
-
-<?php
+<input type="hidden" name="postID" id="postID" value="'. $postID .'" />
+<input type="hidden" name="action" value="solis-editpost" />'.wp_nonce_field( -1, 'solis-edit-post',true, false );
+$end_form='</form>';
+return array("title"=>$title_html, "post"=>$post_html, "begin_form"=>$begin_form, "end_form"=>$end_form);
 }
 
 

@@ -46,12 +46,14 @@
   function editproposal_click(post_id) {
 jQuery.ajax({
          type : "get",
-         dataType : "html",
+         dataType : "json",
          url : solisAjax.ajaxurl,
          data : {action: "solis_editproposal_form", postID: post_id},
 	cache: false,
          success: function(response) {
-               jQuery("#post-"+post_id).find(".entry-content").html(response);
+               jQuery("#post-"+post_id).html(response.begin_form+jQuery("#post-"+post_id).html()+response.end_form);	
+               jQuery("#post-"+post_id).find(".entry-title").html(response.title);
+               jQuery("#post-"+post_id).find(".entry-content").html(response.post);
 		jQuery("#post-"+post_id).find(".entry-content").focus();
          }
       });   

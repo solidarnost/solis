@@ -24,7 +24,13 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'])) {
    	endif;		
 	$redirect = $current_url;
 
-		
+			if (isset ($_POST['proposaltitle'])) {
+			$title =  $_POST['proposaltitle'];
+		} else {
+			echo 'Prosimo, izpolnite naslov predloga.';
+			die();
+		}
+	
 		if (isset ($_POST['proposaldescription'])) {
 			$description = $_POST['proposaldescription'];
 		} else {
@@ -35,11 +41,12 @@ if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'])) {
 			echo "Please no cheating!";
 			die();
 		}
-
+		//TODO: what about date??????
 		$post_id=$_POST['postID'];
 		$my_post = array(
 		      'ID'           => $post_id,
-		      'post_content' => $description
+		      'post_content' =>  wp_filter_nohtml_kses($description),
+		      'post_title' => wp_strip_all_tags($title)
   		);
 		echo "was here";
 		wp_update_post( $my_post );
