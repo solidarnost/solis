@@ -42,3 +42,20 @@
       });   
 
    }
+
+  function editproposal_click(post_id) {
+jQuery.ajax({
+         type : "get",
+         dataType : "html",
+         url : solisAjax.ajaxurl,
+         data : {action: "solis_editproposal_form", postID: post_id},
+	cache: false,
+         success: function(response) {
+               jQuery("#post-"+post_id).find(".entry-content").html(response);
+		jQuery("#post-"+post_id).find(".entry-content").focus();
+         }
+      });   
+
+
+
+  }

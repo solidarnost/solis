@@ -1,34 +1,7 @@
 
-<?php  
-
-if( 'POST' == $_SERVER['REQUEST_METHOD'] && !empty( $_POST['action'])) {
-	if(current_user_can('publish_proposals')){
-		// Do some minor form validation to make sure there is content
-		if (isset ($_POST['proposaltitle'])) {
-			$title =  $_POST['proposaltitle'];
-		} else {
-			echo 'Prosimo, izpolnite naslov predloga.';
-		}
-		if (isset ($_POST['proposaldescription'])) {
-			$description = $_POST['proposaldescription'];
-		} else {
-			echo 'Prosimo, napišite kratek opis predloga';
-		}
-		$tags = $_POST['proposalpost_tags'];
-
-		// Add the content of the form to $post as an array
-		$post = array(
-			'post_title'	=>  wp_strip_all_tags($title),
-			'post_content'	=>  wp_filter_nohtml_kses( $description),
-			'tax_input'	=> array("proposal_topic"=> wp_strip_all_tags($_POST['proposalcat'])),  // Usable for custom taxonomies too
-			'post_status'	=> 'publish',			// Choose: publish, preview, future, etc.
-			'post_type'	=>  wp_strip_all_tags($_POST['proposalpost_type'])  // Use a custom post type if you want to
-		);
-		$post_id=wp_insert_post($post);  // Pass  the value of $post to WordPress the insert function
-								// http://codex.wordpress.org/Function_Reference/wp_insert_post
-		wp_redirect( get_permalink($post_id) );
-	}
-} // end IF
+<?php
+	solis_new_post();
+	solis_edited_post();	
 
 
 ?>

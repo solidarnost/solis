@@ -39,7 +39,8 @@
 				endif;
 
 //				edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
-				echo "<span class='edit-link' title='Funkcionalnost je v izdelavi!'><a href=''>".__('Edit','twentyfourteen')."</a></span>";
+				edit_proposal_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
+//				echo "<span class='edit-link'>edit_proposal_link( __<a href=''>".__('Edit','twentyfourteen')."</a></span>";
 			?>
 <?php if(function_exists('solis_the_ratings')) { solis_the_ratings(); } ?>
 		</div><!-- .entry-meta -->

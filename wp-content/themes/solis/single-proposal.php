@@ -1,3 +1,9 @@
+
+<?php  
+solis_edited_post();
+?>
+
+
 <?php
 /**
  * The Template for displaying all single posts

@@ -224,9 +224,25 @@ function solis_nopriv_newproposal_form() {
 add_action("wp_ajax_solis_newproposal_form", "solis_newproposal_form");
 add_action("wp_ajax_nopriv_solis_newproposal_form", "solis_nopriv_newproposal_form");
 
+/** Defines ajax call function for editing ``proposal'' inline. It exchanges post with window for editing contents */
+/* TODO: Define, when user can change post. Maybe a good idea will be to reset all votes after the post will be added */
+function solis_editproposal_form(){
+	if(!current_user_can('edit_proposals',$_REQUEST['postID'])){
+		_e("You are not allowed to edit this proposal!", 'solis');
+		die();
+	}
+	editpost_draw_form($_REQUEST['postID']);
+	die();
+}
+add_action("wp_ajax_solis_editproposal_form", "solis_editproposal_form");
+add_action("wp_ajax_nopriv_solis_editproposal_form", "solis_editproposal_form");
 
-
-
+/** a code that adds Edit button to the post */
+function edit_proposal_link( $text, $span, $endspan){
+	if(current_user_can('edit_post')){
+		echo $span."<a href='#a' onClick='editproposal_click(".get_the_ID().");'>".$text."</a>".$endspan;
+	}
+}
 
 /** Final touch. Addd a custom post type ``proposal'' an icon */
 function solis_add_menu_icons_styles(){
@@ -346,6 +362,23 @@ function newpost_draw_form($category){
 	}
 }
 
+/** Function draws form when user requests edit of a ``proposal''. It should be called by AJAX call from the frontend */
+function editpost_draw_form($postID){
+
+?>
+<form id="edit_post" name="edit_post" method="post" action="">
+<textarea id="description" tabindex="101" name="proposaldescription" rows="10" columns="50" required><?php echo get_post_field('post_content', $postID); ?></textarea></p>
+
+<p align="right"><input type="submit" value="<?php _e('Submit') ?>" tabindex="102" id="submit" name="submit" /></p>
+
+<input type="hidden" name="proposalpost_type" id="post_type" value="proposal" />
+<input type="hidden" name="postID" id="postID" value="<?php echo $postID; ?>" />
+<input type="hidden" name="action" value="solis-editpost" />
+<?php wp_nonce_field( 'solis-edit-post' ); ?>
+</form>
+
+<?php
+}
 
 
 /** ************************************* VOTING PART OF SOLIS ************************

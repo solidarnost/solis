@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solis WP plugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-21 01:32+0100\n"
-"PO-Revision-Date: 2014-01-21 01:33+0100\n"
+"POT-Creation-Date: 2014-01-23 00:15+0100\n"
+"PO-Revision-Date: 2014-01-23 00:18+0100\n"
 "Last-Translator: \n"
 "Language-Team: Solidarnost.si translation team <samo.penic@solidarnost.si>\n"
 "Language: Slovenian\n"
@@ -108,49 +108,49 @@ msgstr "Na predloge lahko podajo argumente le prijavljeni uporabniki"
 msgid "You are not allowed to add new proposal on given topic!"
 msgstr "Ne morete dodati novega predloga na izbranem področju!"
 
-#: solis.php:265 solis.php:330
+#: solis.php:265 solis.php:330 solis.php:346
 msgid "Title of new proposal"
 msgstr "Naslov predloga"
 
-#: solis.php:268 solis.php:333
+#: solis.php:268 solis.php:333 solis.php:349
 msgid "Detailed description of proposal"
 msgstr "Podroben opis predloga"
 
-#: solis.php:271 solis.php:336
+#: solis.php:271 solis.php:336 solis.php:352
 msgid "Publish"
 msgstr "Objavi"
 
-#: solis.php:342 solis.php:408
+#: solis.php:342 solis.php:408 solis.php:441
 msgid "Supports"
 msgstr "Podpira"
 
-#: solis.php:357 solis.php:423
+#: solis.php:357 solis.php:423 solis.php:456
 msgid "Don't support"
 msgstr "Ne podpira"
 
 #: solis.php:390 solis.php:397 solis.php:400 solis.php:456 solis.php:463
-#: solis.php:466
+#: solis.php:466 solis.php:489 solis.php:496 solis.php:499
 msgid "I support"
 msgstr "Podpiram"
 
 #: solis.php:391 solis.php:398 solis.php:401 solis.php:457 solis.php:464
-#: solis.php:467
+#: solis.php:467 solis.php:490 solis.php:497 solis.php:500
 msgid "I don't support"
 msgstr "Ne podpiram"
 
-#: solis.php:406 solis.php:472
+#: solis.php:406 solis.php:472 solis.php:505
 msgid "Change vote"
 msgstr "Spremeni glas"
 
-#: solis.php:459 solis.php:525 solis.php:527
+#: solis.php:459 solis.php:525 solis.php:527 solis.php:560
 msgid "Vote is invalid!"
 msgstr "Glas ni veljaven!"
 
-#: solis.php:474 solis.php:540 solis.php:542
+#: solis.php:474 solis.php:540 solis.php:542 solis.php:575
 msgid "You are voting too fast!"
 msgstr "Glasujete prehitro!"
 
-#: solis.php:482 solis.php:548 solis.php:550
+#: solis.php:482 solis.php:548 solis.php:550 solis.php:583
 msgid ""
 "System error. User vote count too large. Database could be damaged. Contact "
 "administrator!"
@@ -158,19 +158,19 @@ msgstr ""
 "Napaka v sistemu. Zabeleženo število glasov je napačno, kar lahko pomeni, da "
 "je pokvarjena baza podatkov. Kontaktirajte administratorja!"
 
-#: solis.php:489 solis.php:555 solis.php:557
+#: solis.php:489 solis.php:555 solis.php:557 solis.php:590
 msgid "User already voted!"
 msgstr "Uporabnik je že glasoval!"
 
-#: solis.php:503 solis.php:569 solis.php:571
+#: solis.php:503 solis.php:569 solis.php:571 solis.php:604
 msgid "You can vote again!"
 msgstr "Glasujte ponovno"
 
-#: solis.php:505 solis.php:571 solis.php:573
+#: solis.php:505 solis.php:571 solis.php:573 solis.php:606
 msgid "Thank you for your vote!"
 msgstr "Hvala za vaš glas!"
 
-#: solis.php:512 solis.php:578 solis.php:580
+#: solis.php:512 solis.php:578 solis.php:580 solis.php:613
 msgid "You need to login to vote!"
 msgstr "Za glasovanje se morate prijaviti!"
 
@@ -182,46 +182,76 @@ msgstr "Avtor predlogov"
 msgid "Proposal moderator"
 msgstr "Moderator predlogov"
 
-#: solis.php:611 solis.php:613
+#: solis.php:611 solis.php:613 solis.php:646
 msgid "Password changed successfully"
 msgstr "Geslo je bilo uspešno spremenjeno."
 
-#: solis.php:617 solis.php:619
+#: solis.php:617 solis.php:619 solis.php:652
 msgid "Old Password"
 msgstr "Staro geslo"
 
-#: solis.php:621 solis.php:623
+#: solis.php:621 solis.php:623 solis.php:656
 msgid "New Password"
 msgstr "Novo geslo"
 
-#: solis.php:625 solis.php:627
+#: solis.php:625 solis.php:627 solis.php:660
 msgid "Password Confirm"
 msgstr "Potrdi geslo"
 
-#: solis.php:632 solis.php:634
+#: solis.php:632 solis.php:634 solis.php:667
 msgid "Change Password"
 msgstr "Spremeni geslo"
 
-#: solis.php:665 solis.php:667
+#: solis.php:665 solis.php:667 solis.php:700
 msgid "Old password incorrect"
 msgstr "Staro geslo ni pravilno."
 
-#: solis.php:669 solis.php:671
+#: solis.php:669 solis.php:671 solis.php:704
 msgid "New password is the same as the old one."
 msgstr "Novo geslo je enako staremu."
 
-#: solis.php:674 solis.php:676
+#: solis.php:674 solis.php:676 solis.php:709
 msgid "Please enter a password, and confirm it"
 msgstr "Prosim vnesite novo geslo in ga potrdite."
 
-#: solis.php:678 solis.php:680
+#: solis.php:678 solis.php:680 solis.php:713
 msgid "Passwords do not match"
 msgstr "Gesli se ne ujemata."
 
-#: solis.php:708 solis.php:710
+#: solis.php:708 solis.php:710 solis.php:743
 msgid "Error"
 msgstr "Napaka"
 
-#: solis.php:806
+#: solis.php:806 solis.php:842
 msgid "Sign out"
 msgstr "Odjava"
+
+#: solis.php:231
+msgid "You are not allowed to edit this proposal!"
+msgstr "Nimate dovoljenja za urejanje tega predloga"
+
+#: solis.php:372
+msgid "Submit"
+msgstr "Pošlji"
+
+#: solis.php:856
+msgid "Basic CSV import"
+msgstr "Osnovni CSV uvoz"
+
+#: solis.php:861
+msgid "You do not have sufficient permissions to access this page."
+msgstr "Nimate dovoljenja za dostop do te strani."
+
+#: solis.php:865
+msgid "Automatized addition of new users via CSV (use with caution)"
+msgstr ""
+"Avotmatizirano dodajanje novih uporavnikov s CSV datoteko (uporabljajte "
+"skrajno previdno)"
+
+#: solis.php:896
+msgid "CSV file:"
+msgstr "CSV datoteka:"
+
+#: solis.php:897
+msgid "Import CSV"
+msgstr "Uvozite CSV datoteko"
