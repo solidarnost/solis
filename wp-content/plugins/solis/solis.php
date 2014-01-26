@@ -31,7 +31,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 include_once("user_roles.php");
-include_once("email_notifications.php");
+
 
 
 add_action('init', 'solis_textdomain');
@@ -321,6 +321,19 @@ function solis_remove_post_meta_boxes() {
 }
 
 
+/** This options make links in post and commentc automatically clickable */
+add_filter( 'comment_text', 'make_clickable',      9 );
+add_filter( 'the_content', 'make_clickable',      12 );
+
+
+/** This function add metadata to proposal, that user visited it. Must be called inside a loop. */
+add_action('single_post_title', 'solis_log_user_post');
+function solis_log_user_post(){
+// TODO: warning, this can result in massive data buildup. Check whether it is acceptable to do that.
+/* it is better to store info to post than to user. If post is eventually deleted, space is freed.  */
+	update_post_meta(get_the_ID(), 'last_check_by_'.wp_get_current_user()->ID, current_time('mysql') );
+}
+
 
 /** Normal users (voters, also authors and below) should not see the admin bar when logged in. This looks much nicer **/
 function solis_remove_admin_bar() {
@@ -479,7 +492,7 @@ function solis_the_ratings(){
 
 /** Function called from AJAX when vote is done. It highlights desired vote and thanks user for voting. */
 /// TODO: style should go into theme css
-function demovote_post_voting_line($post_id, $user_id, $voted=false, $voted_msg){
+function demovote_post_voting_line($post_id, $user_id, $voted=false, $voted_msg=''){
 	$retval="<span class='vote_counter_positive'>".get_positive_votes($post_id)."</span>/<span class='vote_counter_negative'>".get_negative_votes($post_id)."</span>|";
 	
 	$user_count=user_voted($post_id, $user_id);
@@ -787,7 +800,7 @@ function solis_lastlogin_count( $atts ) {
 		
 //select post_type, d.slug from wp_posts as a left join wp_term_relationships as b  on a.ID=b.object_id left join wp_term_taxonomy as c on b.term_taxonomy_id=c.term_taxonomy_id left join wp_terms as d on  c.term_id=d.term_id where slug='tema1';	
 //$cnt=$wpdb->get_var($wpdb->prepare("select count(slug) from $wpdb->posts as a left join $wpdb->term_relationships as b  on a.ID=b.object_id left join $wpdb->term_taxonomy as c on b.term_taxonomy_id=c.term_taxonomy_id left join $wpdb->terms as d on  c.term_id=d.term_id where slug='$topic'"));
-		$cnt=$wpdb->get_var($wpdb->prepare("select count(term_id) from $wpdb->posts as a left join $wpdb->term_relationships as b  on a.ID=b.object_id left join $wpdb->term_taxonomy as c on b.term_taxonomy_id=c.term_taxonomy_id where term_id=$topic_id and post_status='publish' and post_date>'$since'"));
+		$cnt=$wpdb->get_var($wpdb->prepare("select count(term_id) from $wpdb->posts as a left join $wpdb->term_relationships as b  on a.ID=b.object_id left join $wpdb->term_taxonomy as c on b.term_taxonomy_id=c.term_taxonomy_id where term_id=$topic_id and post_status='publish' and post_date>'%s'",$since));
 
 
 //select COUNT(*) FROM $wpdb->demovote WHERE post_id=%d and user_id=%d and timestamp>now()-INTERVAL %d SECOND",$post_id, $user_id, $interval ));
@@ -804,6 +817,20 @@ function solis_lastlogin_count( $atts ) {
 }
 add_shortcode( 'solis_recent', 'solis_lastlogin_count' );
 
+
+/** Counts last comments on topics */
+function solis_lastread_comments_count( $atts ){
+	extract (shortcode_atts( array(
+		'proposal_id'=>-1,
+		'since' => date ('Y-m-d H:i:s')), $atts) );
+	if($proposal_id>0){
+		global $wpdb;
+		$cnt=$wpdb->get_var($wpdb->prepare("select count(ID) from $wpdb->posts as a right join $wpdb->comments as b on (a.ID=b.comment_post_ID) where ID=%d and b.comment_date>'%s' and b.comment_date>'2014-01-23 20:40:00' and comment_approved=1", $proposal_id, $since));
+		if($cnt==0) return "";
+		else return "<div class='comment_count'>".$cnt."</div>";
+	} else return ""; 
+}
+add_shortcode( 'solis_recent_comments', 'solis_lastread_comments_count' );
 
 /** ***************************** Secondary menu modifications  *************************************   */
 function proposal_topic_menu_count( $menu_items ) {

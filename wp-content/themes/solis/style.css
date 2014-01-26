@@ -369,6 +369,23 @@ border-radius: 13px;
 	border: solid 1px black;
 	
 }
+.comment_count  {
+	background:#fe0307;
+	color: #ffffff;
+	display: inline;
+	padding:3px;
+	top:-2px;
+	right:-20px;
+	position:absolute;
+	min-width:20px;
+	min-height:20px;
+-moz-border-radius: 13px;
+border-radius: 13px;
+	text-align:center;
+	line-height:20px;
+	border: solid 1px white;
+	
+}
 
 /*dodatni gumbi */
 

@@ -43,6 +43,11 @@
 //				echo "<span class='edit-link'>edit_proposal_link( __<a href=''>".__('Edit','twentyfourteen')."</a></span>";
 			?>
 <?php if(function_exists('solis_the_ratings')) { solis_the_ratings(); } ?>
+<?php if(function_exists('solis_lastread_comments_count')) { 
+		$current_user = wp_get_current_user();
+		$last_check = get_post_meta ( get_the_ID(), 'last_check_by_'.$current_user->ID, true );
+
+		echo solis_lastread_comments_count(array('proposal_id'=>get_the_ID(), 'since'=>$last_check)); } ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 	<?php if ( is_search() ) : ?>
