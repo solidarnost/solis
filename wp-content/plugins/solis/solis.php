@@ -394,6 +394,17 @@ return array("title"=>$title_html, "post"=>$post_html, "begin_form"=>$begin_form
 }
 
 
+/** Should be used inside a loop. It lists all the proposal topics, similar to categories lists */
+function get_proposal_topics_list(){
+	$retval="";
+	$cats=get_categories('taxonomy=proposal_topic');
+	foreach($cats as $cat){
+		if($retval!="")	$retval=$retval+", ";
+		$retval=$retval.$cat->{'name'};
+	}
+	return $retval;
+}
+
 /** ************************************* VOTING PART OF SOLIS ************************
  **/
 
@@ -827,7 +838,7 @@ function solis_lastread_comments_count( $atts ){
 		global $wpdb;
 		$cnt=$wpdb->get_var($wpdb->prepare("select count(ID) from $wpdb->posts as a right join $wpdb->comments as b on (a.ID=b.comment_post_ID) where ID=%d and b.comment_date>'%s' and b.comment_date>'2014-01-23 20:40:00' and comment_approved=1", $proposal_id, $since));
 		if($cnt==0) return "";
-		else return "<div class='comment_count'>".$cnt."</div>";
+		else return $cnt;
 	} else return ""; 
 }
 add_shortcode( 'solis_recent_comments', 'solis_lastread_comments_count' );

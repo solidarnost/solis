@@ -21,6 +21,61 @@
 .center{
 margin: 0 auto;
 }
+.notification{
+	float:right;
+	background:#767676;
+	color:#ffffff;
+	padding:3px;
+	min-width:20px;
+	min-height:20px;
+-moz-border-radius: 13px;
+border-radius: 13px;
+	text-align:center;
+	line-height:20px;
+	padding-right:10px;
+	margin-left:10px;
+}
+.notification_alert{
+	background:#fe0307;
+	color: #ffffff;
+}
+.notification_new_comment:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f108";
+	margin-right:5px;
+	margin-left:5px;
+}
+
+.notification_mail:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f463";
+	margin-right:5px;
+	margin-left:5px;
+}
+
+.clickable{
+	cursor:pointer;
+}
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
@@ -367,23 +422,6 @@ border-radius: 13px;
 	text-align:center;
 	line-height:20px;
 	border: solid 1px black;
-	
-}
-.comment_count  {
-	background:#fe0307;
-	color: #ffffff;
-	display: inline;
-	padding:3px;
-	top:-2px;
-	right:-20px;
-	position:absolute;
-	min-width:20px;
-	min-height:20px;
--moz-border-radius: 13px;
-border-radius: 13px;
-	text-align:center;
-	line-height:20px;
-	border: solid 1px white;
 	
 }
 

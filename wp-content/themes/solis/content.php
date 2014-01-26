@@ -13,9 +13,29 @@
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 	<?php twentyfourteen_post_thumbnail(); ?>
 	<header class="entry-header">
-		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
+		<?php if ( in_array( 'proposal_topic', get_object_taxonomies( get_post_type() ) ) ) : ?>
 		<div class="entry-meta">
-			<span class="cat-links"><?php echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'twentyfourteen' ) ); ?></span>
+			<span class="cat-links"><?php 
+				//echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'twentyfourteen' ) ); 
+		echo get_proposal_topics_list(); ?>
+		<?php 
+		if(function_exists('solis_lastread_comments_count')) { 
+			$current_user = wp_get_current_user();
+			$last_check = get_post_meta ( get_the_ID(), 'last_check_by_'.$current_user->ID, true );
+			$cnt=solis_lastread_comments_count(array('proposal_id'=>get_the_ID(), 'since'=>$last_check));
+			if($cnt>0){
+				echo "<span class='notification notification_new_comment notification_alert'>$cnt</span>";
+			}
+			else{
+		//		echo "<span class='notification_new_comment notification'>0</span>";
+
+			}
+		}
+		?>
+		<?php
+	//	echo "<span class='notification notification_mail clickable'>prijavi se</span>";
+		?>
+
 		</div>
 		<?php
 			endif;
@@ -43,11 +63,6 @@
 //				echo "<span class='edit-link'>edit_proposal_link( __<a href=''>".__('Edit','twentyfourteen')."</a></span>";
 			?>
 <?php if(function_exists('solis_the_ratings')) { solis_the_ratings(); } ?>
-<?php if(function_exists('solis_lastread_comments_count')) { 
-		$current_user = wp_get_current_user();
-		$last_check = get_post_meta ( get_the_ID(), 'last_check_by_'.$current_user->ID, true );
-
-		echo solis_lastread_comments_count(array('proposal_id'=>get_the_ID(), 'since'=>$last_check)); } ?>
 		</div><!-- .entry-meta -->
 	</header><!-- .entry-header -->
 	<?php if ( is_search() ) : ?>
