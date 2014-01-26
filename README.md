@@ -27,7 +27,7 @@ Installation:
 4. From Menu->Plugins->Installed: Activate plugin 'Solis'.
 5. From Menu->Apperance->Themes: Activate theme 'Solis'.
 6. Add some discussion fields by providing new Proposal topics. Go to Menu->Proposal->Topic and add some topics.
-7. Edit menus in Menu->Apperance->Menus. I suggest to add Proposal topics into secondary menu. Keep primary for logout, etc. DO MAKE primary menu. It can be empty, but it will be automatically populated with logout button.
+7. Edit menus in Menu->Apperance->Menus. I suggest to add Proposal topics into secondary menu. Keep primary for logout, etc. DO MAKE primary menu. It can be empty, but it will be automatically populated with logout button. If 'Proposal topics' are not seen as options to add menus, then open 'View option' while editing the menu and check 'Proposal topics' there first.
 8. Make a page, that allows users to change password. In page put shortcode `[password_form]`. Put it into primary menu.
 9. Assign users a role of "Post Author". They will be able to publish Proposal. Also classic "Author" can publish proposals. Use "Post moderator" or classic "Editor" to moderate posts.
 10. Use Menu->Users->Add basic CSV with caution. It adds new users based on CSV (first name, last name, email) and notifies them of the newly created password. It gives them WP site default role.
