@@ -35,6 +35,8 @@ function solis_ajax_toggle_options() {
 			solis_subscribe_post_email($_REQUEST['postID']	,$_REQUEST['uid']);
 			$state=1;
 		}
+	} elseif("notification_mail_topic"==$option_name){
+		$state=1;
 	} else {
 		echo json_encode(array("success"=>false, "error"=>__("Option not recognised!", "solis")));
 		die();

@@ -73,9 +73,9 @@ jQuery.ajax({
          success: function(response) {
 		if(response.success==true){
 			if(response.state==1){
-				jQuery("#post-"+post_id).find("."+option_name).addClass("notification_set").addClass(option_name+"_on").removeClass(option_name+"_off");
+				jQuery("#"+option_name+"-"+post_id).addClass("notification_set").addClass(option_name+"_on").removeClass(option_name+"_off");
 			} else {
-				jQuery("#post-"+post_id).find("."+option_name).removeClass("notification_set").addClass(option_name+"_off").removeClass(option_name+"_on");
+				jQuery("#"+option_name+"-"+post_id).removeClass("notification_set").addClass(option_name+"_off").removeClass(option_name+"_on");
 			}
 		} else {
 			alert("Error: "+response.error);

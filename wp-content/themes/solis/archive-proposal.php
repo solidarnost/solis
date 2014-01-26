@@ -32,8 +32,15 @@ get_header(); ?>
 
 	<header class="page-header">
 				<h1 class="page-title">
-	<?php  $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); //echo "Predlogi iz področja ". $term->name; ?>
+	<?php  $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
+		echo "Predlogi iz področja ". $term->name; ?>
+<?php
+	$current_user = wp_get_current_user();
+	$add_classes = "notification_mail_topic_off";
+	echo "<span id='notification_mail_topic-".$term->term_id."' class='notification notification_mail_topic clickable $add_classes' onClick='toggle_option(".'"notification_mail_topic"'.",".$term->term_id.",$current_user->ID);'>e-opomnik</span>";
+?>
 				</h1>
+			<p>
 			<?php 
 //* Notify WP when user visited this site last time.
    // Setting the last login of the user
@@ -43,6 +50,7 @@ get_header(); ?>
 			?>
 			<div id="ajaxform"><button id="newproposal" class="button center" onclick="newproposalclick(<?php echo $term->term_id; ?>,<?php echo get_current_user_id(); ?>)">+ Nov predlog za <?php echo $term->name; ?></button></div>
 			<?php } ?>
+			</p>
 			</header><!-- .page-header -->
 
 			<?php if ( have_posts() ) : ?>
