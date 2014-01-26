@@ -39,6 +39,11 @@ border-radius: 13px;
 	background:#fe0307;
 	color: #ffffff;
 }
+.notification_set{
+	background:#24890d;
+	color: #ffffff;
+}
+
 .notification_new_comment:before{
 	  font-family: 'Genericons';
      font-style: normal;    
@@ -56,7 +61,7 @@ border-radius: 13px;
 	margin-left:5px;
 }
 
-.notification_mail:before{
+.notification_mail_off:before{
 	  font-family: 'Genericons';
      font-style: normal;    
      font-weight: normal;
@@ -69,6 +74,22 @@ border-radius: 13px;
     width: 24px;
     -webkit-font-smoothing: antialiased;
 	content:"\f463";
+	margin-right:5px;
+	margin-left:5px;
+}
+.notification_mail_on:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f465";
 	margin-right:5px;
 	margin-left:5px;
 }

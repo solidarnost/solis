@@ -18,4 +18,92 @@
 */
 
 
+/** Defines ajax call function for turning on or off custom options */
+function solis_ajax_toggle_options() {
+	if($_REQUEST['uid']!=get_current_user_id()){
+		$err_desc=__("You are not authorised to change this setting!", 'solis');
+		echo json_encode(array("success"=>false, "error"=>$err_desc));
+		die();
+	}
+	$option_name=$_REQUEST['optionName'];
+	if("notification_mail"==$option_name){
+		if(solis_is_subscribed_post_email($_REQUEST['postID'], $_REQUEST['uid'])){
+			solis_unsubscribe_post_email($_REQUEST['postID'],$_REQUEST['uid']);
+			$state=0;
+			
+		} else {
+			solis_subscribe_post_email($_REQUEST['postID']	,$_REQUEST['uid']);
+			$state=1;
+		}
+	} else {
+		echo json_encode(array("success"=>false, "error"=>__("Option not recognised!", "solis")));
+		die();
+		
+	}
+	echo json_encode(array("success"=>true, "state"=>$state));
+	die();
+}
+
+function solis_nopriv_ajax_toggle_options() {
+	$err_desc=__("You are not allowed to toggle given setting!", 'solis');
+	echo json_encode(array("success"=>false, "error"=>$err_desc));
+	die();
+}
+
+add_action("wp_ajax_solis_toggle_option", "solis_ajax_toggle_options");
+add_action("wp_ajax_nopriv_solis_toggle_option", "solis_nopriv_ajax_toggle_options");
+
+
+
+function solis_is_subscribed_post_email($post_id, $user_id){
+	$retval=get_post_meta($post_id,'_solis_subscribed_by_user');
+	return	in_array($user_id, $retval);
+}
+
+function solis_unsubscribe_post_email($post_id, $user_id){
+	delete_post_meta($post_id, '_solis_subscribed_by_user', $user_id);
+}
+
+
+function solis_subscribe_post_email($post_id, $user_id){
+	add_post_meta($post_id, '_solis_subscribed_by_user', $user_id);
+}
+
+
+
+/** Hooks for sending notification emails whenever new comment is added to the post */
+add_action('comment_post','solis_email_on_new_comment_post',99,2);
+
+function solis_email_on_new_comment_post($comment_ID, $approval_status){
+	$comment_values=get_comment($comment_ID);
+	$recipients=get_post_meta($comment_values->comment_post_ID, '_solis_subscribed_by_user');
+	$post=get_post($comment_values->comment_post_ID);
+	$subject=sprintf(__("[Solis] User %s commented on post you are watching!",'solis'),$comment_values->comment_author);
+	$message=sprintf(__("You received this message, because you are subscribed to news about the proposal %s!
+
+User %s commented on proposal with comment:
+%s
+
+You may check the proposal by clicking on this link %s. If you wish to unfollow this proposal, please click the link and unsubscribe to proposal.
+
+
+Your Solis team.", 'solis'),$post->post_title, $comment_values->comment_author, $comment_values->comment_content, esc_url(get_post_permalink($comment_values->comment_post_ID)));
+	if($recipients){
+		foreach($recipients as $recipient){
+			$udata=get_userdata($recipient);
+			//TODO emails should not be send immediately to all the recepients but scheduled by cron!
+			solis_send_notification($udata->user_email, $subject, $message);
+		}
+	}
+}
+
+
+/** Function that sendd notifications through email to subscribers */
+function solis_send_notification($email, $subject, $message){
+		$headers[]= "From: Solis <no-reply@solidarnost.si>";
+		wp_mail ( $email, $subject , $message, $headers );
+
+}
+
+
 ?>

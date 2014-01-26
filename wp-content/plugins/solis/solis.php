@@ -31,7 +31,7 @@
 // Exit if accessed directly
 if ( ! defined( 'ABSPATH' ) ) exit;
 include_once("user_roles.php");
-
+include_once("email_notifications.php");
 
 
 add_action('init', 'solis_textdomain');

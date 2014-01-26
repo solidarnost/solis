@@ -61,3 +61,25 @@ jQuery.ajax({
 
 
   }
+
+
+function toggle_option(option_name, post_id, user_id){
+jQuery.ajax({
+         type : "get",
+         dataType : "json",
+         url : solisAjax.ajaxurl,
+         data : {action: "solis_toggle_option", optionName:option_name, postID: post_id, uid:user_id},
+	cache: false,
+         success: function(response) {
+		if(response.success==true){
+			if(response.state==1){
+				jQuery("#post-"+post_id).find("."+option_name).addClass("notification_set").addClass(option_name+"_on").removeClass(option_name+"_off");
+			} else {
+				jQuery("#post-"+post_id).find("."+option_name).removeClass("notification_set").addClass(option_name+"_off").removeClass(option_name+"_on");
+			}
+		} else {
+			alert("Error: "+response.error);
+		}
+         }
+      });   
+}

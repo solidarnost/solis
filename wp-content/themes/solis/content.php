@@ -33,7 +33,11 @@
 		}
 		?>
 		<?php
-	//	echo "<span class='notification notification_mail clickable'>prijavi se</span>";
+		if(solis_is_subscribed_post_email(get_the_ID(), $current_user->ID)==true)
+			$add_classes="notification_set notification_mail_on";
+		else
+			$add_classes="notification_mail_off";
+		echo "<span class='notification notification_mail clickable $add_classes' onClick='toggle_option(".'"notification_mail"'.",".get_the_ID().",$current_user->ID);'>e-opomnik</span>";
 		?>
 
 		</div>
