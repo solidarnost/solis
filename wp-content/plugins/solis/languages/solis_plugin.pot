@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-23 00:15+0100\n"
+"POT-Creation-Date: 2014-01-26 22:42+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -105,67 +105,69 @@ msgstr ""
 msgid "You are not allowed to add new proposal on given topic!"
 msgstr ""
 
-#: solis.php:265 solis.php:330 solis.php:346
+#: solis.php:265 solis.php:330 solis.php:346 solis.php:360
 msgid "Title of new proposal"
 msgstr ""
 
-#: solis.php:268 solis.php:333 solis.php:349
+#: solis.php:268 solis.php:333 solis.php:349 solis.php:363
 msgid "Detailed description of proposal"
 msgstr ""
 
-#: solis.php:271 solis.php:336 solis.php:352
+#: solis.php:271 solis.php:336 solis.php:352 solis.php:366
 msgid "Publish"
 msgstr ""
 
-#: solis.php:342 solis.php:408 solis.php:441
+#: solis.php:342 solis.php:408 solis.php:441 solis.php:465
 msgid "Supports"
 msgstr ""
 
-#: solis.php:357 solis.php:423 solis.php:456
+#: solis.php:357 solis.php:423 solis.php:456 solis.php:480
 msgid "Don't support"
 msgstr ""
 
 #: solis.php:390 solis.php:397 solis.php:400 solis.php:456 solis.php:463
-#: solis.php:466 solis.php:489 solis.php:496 solis.php:499
+#: solis.php:466 solis.php:489 solis.php:496 solis.php:499 solis.php:513
+#: solis.php:520 solis.php:523
 msgid "I support"
 msgstr ""
 
 #: solis.php:391 solis.php:398 solis.php:401 solis.php:457 solis.php:464
-#: solis.php:467 solis.php:490 solis.php:497 solis.php:500
+#: solis.php:467 solis.php:490 solis.php:497 solis.php:500 solis.php:514
+#: solis.php:521 solis.php:524
 msgid "I don't support"
 msgstr ""
 
-#: solis.php:406 solis.php:472 solis.php:505
+#: solis.php:406 solis.php:472 solis.php:505 solis.php:529
 msgid "Change vote"
 msgstr ""
 
-#: solis.php:459 solis.php:525 solis.php:527 solis.php:560
+#: solis.php:459 solis.php:525 solis.php:527 solis.php:560 solis.php:584
 msgid "Vote is invalid!"
 msgstr ""
 
-#: solis.php:474 solis.php:540 solis.php:542 solis.php:575
+#: solis.php:474 solis.php:540 solis.php:542 solis.php:575 solis.php:599
 msgid "You are voting too fast!"
 msgstr ""
 
-#: solis.php:482 solis.php:548 solis.php:550 solis.php:583
+#: solis.php:482 solis.php:548 solis.php:550 solis.php:583 solis.php:607
 msgid ""
 "System error. User vote count too large. Database could be damaged. Contact "
 "administrator!"
 msgstr ""
 
-#: solis.php:489 solis.php:555 solis.php:557 solis.php:590
+#: solis.php:489 solis.php:555 solis.php:557 solis.php:590 solis.php:614
 msgid "User already voted!"
 msgstr ""
 
-#: solis.php:503 solis.php:569 solis.php:571 solis.php:604
+#: solis.php:503 solis.php:569 solis.php:571 solis.php:604 solis.php:628
 msgid "You can vote again!"
 msgstr ""
 
-#: solis.php:505 solis.php:571 solis.php:573 solis.php:606
+#: solis.php:505 solis.php:571 solis.php:573 solis.php:606 solis.php:630
 msgid "Thank you for your vote!"
 msgstr ""
 
-#: solis.php:512 solis.php:578 solis.php:580 solis.php:613
+#: solis.php:512 solis.php:578 solis.php:580 solis.php:613 solis.php:637
 msgid "You need to login to vote!"
 msgstr ""
 
@@ -177,74 +179,107 @@ msgstr ""
 msgid "Proposal moderator"
 msgstr ""
 
-#: solis.php:611 solis.php:613 solis.php:646
+#: solis.php:611 solis.php:613 solis.php:646 solis.php:670
 msgid "Password changed successfully"
 msgstr ""
 
-#: solis.php:617 solis.php:619 solis.php:652
+#: solis.php:617 solis.php:619 solis.php:652 solis.php:676
 msgid "Old Password"
 msgstr ""
 
-#: solis.php:621 solis.php:623 solis.php:656
+#: solis.php:621 solis.php:623 solis.php:656 solis.php:680
 msgid "New Password"
 msgstr ""
 
-#: solis.php:625 solis.php:627 solis.php:660
+#: solis.php:625 solis.php:627 solis.php:660 solis.php:684
 msgid "Password Confirm"
 msgstr ""
 
-#: solis.php:632 solis.php:634 solis.php:667
+#: solis.php:632 solis.php:634 solis.php:667 solis.php:691
 msgid "Change Password"
 msgstr ""
 
-#: solis.php:665 solis.php:667 solis.php:700
+#: solis.php:665 solis.php:667 solis.php:700 solis.php:724
 msgid "Old password incorrect"
 msgstr ""
 
-#: solis.php:669 solis.php:671 solis.php:704
+#: solis.php:669 solis.php:671 solis.php:704 solis.php:728
 msgid "New password is the same as the old one."
 msgstr ""
 
-#: solis.php:674 solis.php:676 solis.php:709
+#: solis.php:674 solis.php:676 solis.php:709 solis.php:733
 msgid "Please enter a password, and confirm it"
 msgstr ""
 
-#: solis.php:678 solis.php:680 solis.php:713
+#: solis.php:678 solis.php:680 solis.php:713 solis.php:737
 msgid "Passwords do not match"
 msgstr ""
 
-#: solis.php:708 solis.php:710 solis.php:743
+#: solis.php:708 solis.php:710 solis.php:743 solis.php:767
 msgid "Error"
 msgstr ""
 
-#: solis.php:806 solis.php:842
+#: solis.php:806 solis.php:842 solis.php:880
 msgid "Sign out"
 msgstr ""
 
-#: solis.php:231
+#: solis.php:231 solis.php:231
 msgid "You are not allowed to edit this proposal!"
 msgstr ""
 
-#: solis.php:372
+#: solis.php:372 solis.php:387
 msgid "Submit"
 msgstr ""
 
-#: solis.php:856
+#: solis.php:856 solis.php:894
 msgid "Basic CSV import"
 msgstr ""
 
-#: solis.php:861
+#: solis.php:861 solis.php:899
 msgid "You do not have sufficient permissions to access this page."
 msgstr ""
 
-#: solis.php:865
+#: solis.php:865 solis.php:903
 msgid "Automatized addition of new users via CSV (use with caution)"
 msgstr ""
 
-#: solis.php:896
+#: solis.php:896 solis.php:934
 msgid "CSV file:"
 msgstr ""
 
-#: solis.php:897
+#: solis.php:897 solis.php:935
 msgid "Import CSV"
+msgstr ""
+
+#: email_notifications.php:24
+msgid "You are not authorised to change this setting!"
+msgstr ""
+
+#: email_notifications.php:39
+msgid "Option not recognised!"
+msgstr ""
+
+#: email_notifications.php:48
+msgid "You are not allowed to toggle given setting!"
+msgstr ""
+
+#: email_notifications.php:81
+#, php-format
+msgid "[Solis] User %s commented on post you are watching!"
+msgstr ""
+
+#: email_notifications.php:82
+#, php-format
+msgid ""
+"You received this message, because you are subscribed to news about the "
+"proposal %s!\n"
+"\n"
+"User %s commented on proposal with comment:\n"
+"%s\n"
+"\n"
+"You may check the proposal by clicking on this link %s. If you wish to "
+"unfollow this proposal, please click the link and unsubscribe to proposal.\n"
+"\n"
+"\n"
+"Your Solis team."
 msgstr ""
