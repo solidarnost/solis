@@ -157,7 +157,6 @@ Your Solis team.", 'solis'),$term->name, $author->display_name, $post->post_titl
 		foreach($users as $user){
 //			error_log("To user: ".$user->user_email." Message: ".$message);
 			solis_send_notification($user->user_email, $subject, $message);
-
 		}
 	}
 } //END IF
