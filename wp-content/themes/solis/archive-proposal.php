@@ -36,7 +36,11 @@ get_header(); ?>
 		echo "Predlogi iz področja ". $term->name; ?>
 <?php
 	$current_user = wp_get_current_user();
-	$add_classes = "notification_mail_topic_off";
+	if(solis_is_subscribed_topic_email($term->term_id, $current_user->ID)==true)
+			$add_classes="notification_set notification_mail_topic_on";
+		else
+			$add_classes="notification_mail_topic_off";
+
 	echo "<span id='notification_mail_topic-".$term->term_id."' class='notification notification_mail_topic clickable $add_classes' onClick='toggle_option(".'"notification_mail_topic"'.",".$term->term_id.",$current_user->ID);'>e-opomnik</span>";
 ?>
 				</h1>
