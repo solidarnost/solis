@@ -61,6 +61,11 @@ border-radius: 13px;
 	margin-left:5px;
 }
 
+.notification_mail_topic {
+	float: right;
+	margin-right:20px;
+}
+
 .notification_mail_off:before, .notification_mail_topic_off:before{
 	  font-family: 'Genericons';
      font-style: normal;    

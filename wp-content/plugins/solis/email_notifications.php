@@ -132,33 +132,35 @@ function solis_send_notification($email, $subject, $message){
 }
 
 /** Hooks for sending notification emails whenever new proposal is added to topic */
-add_action( 'publish_post', 'solis_email_on_new_proposal_topic');
+add_action( 'publish_proposal', 'solis_email_on_new_proposal_topic');
 
 function solis_email_on_new_proposal_topic($post_id){
-//if( ( $_POST['post_status'] == 'publish' ) && ( $_POST['original_post_status'] != 'publish' ) ) {
 	$post = get_post($post_id);
+if( ( $post->post_status == 'publish' ) && ( $post->post_date==$post->post_modified ) ) {
         $author = get_userdata($post->post_author);
 
 	$term_list = wp_get_post_terms($post_id, 'proposal_topic', array("fields" => "all"));
 	foreach($term_list as $term){
 		$termID=$term->term_id;
-		$users=$get_users("meta=proposal_topic&meta_value=$termID");
+		$users=get_users("meta_key=_solis_subscribe_topic&meta_value=$termID");
 		
-		$subject=sprintf(__("[Solis] User %s posted proposal on topic you are watching!",'solis'),$author);
+		$subject=sprintf(__("[Solis] User %s posted proposal on topic %s!",'solis'),$author->display_name, $term->name);
 		$message=sprintf(__("You received this message, because you are subscribed to news about the topic %s!
 
-User %s posted proposal in chosen topic with comment:
+User %s posted proposal entitled '%s' in chosen topic:
 %s
 
 You may check the proposal by clicking on this link %s. If you wish to unfollow the topic, please login to Solis system and unsubscribe.
 
 
-Your Solis team.", 'solis'),$post->post_title, $author, $post->post_content, esc_url(get_post_permalink($post_id)));
-	
+Your Solis team.", 'solis'),$term->name, $author->display_name, $post->post_title, apply_filters( 'the_content', $post->post_content ), esc_url(get_post_permalink($post_id)));
 		foreach($users as $user){
+//			error_log("To user: ".$user->user_email." Message: ".$message);
+			solis_send_notification($user->user_email, $subject, $message);
+
 		}
 	}
-//} //END IF
+} //END IF
 }
 
 

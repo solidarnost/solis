@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Solis WP plugin 1.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-26 22:42+0100\n"
-"PO-Revision-Date: 2014-01-26 22:56+0100\n"
+"POT-Creation-Date: 2014-01-27 22:09+0100\n"
+"PO-Revision-Date: 2014-01-27 22:13+0100\n"
 "Last-Translator: \n"
 "Language-Team: Solidarnost.si translation team <samo.penic@solidarnost.si>\n"
 "Language: Slovenian\n"
@@ -262,22 +262,22 @@ msgstr "Uvozite CSV datoteko"
 msgid "You are not authorised to change this setting!"
 msgstr "Nimate dovoljenja za spreminjanje izbrane nastavitve!"
 
-#: email_notifications.php:39
+#: email_notifications.php:39 email_notifications.php:49
 msgid "Option not recognised!"
 msgstr "Neznana nastavitev!"
 
-#: email_notifications.php:48
+#: email_notifications.php:48 email_notifications.php:58
 msgid "You are not allowed to toggle given setting!"
 msgstr "Nimate dovoljenja za spreminjanje izbranih nastavitev!"
 
-#: email_notifications.php:81
+#: email_notifications.php:81 email_notifications.php:107
 #, php-format
 msgid "[Solis] User %s commented on post you are watching!"
 msgstr ""
 "[Solis] Uporabnik/-ca %s je komentiral/a na predlog, na katerega ste "
 "naročeni!"
 
-#: email_notifications.php:82
+#: email_notifications.php:82 email_notifications.php:108
 #, php-format
 msgid ""
 "You received this message, because you are subscribed to news about the "
@@ -301,6 +301,39 @@ msgstr ""
 "Predlog si lahko ogledate s klikom na povezavo %s. Če želite prenehati "
 "prejemati obvestila v zvezi s tem predlogom, sledite zgornji povezavi in "
 "odkljukajte sprejemanje obvestil.\n"
+"\n"
+"\n"
+"Vaša ekipa sistema Solis."
+
+#: email_notifications.php:147
+#, php-format
+msgid "[Solis] User %s posted proposal on topic %s!"
+msgstr "[Solis] Uporabnik/-ca %s je poslal/a predlog na področje %s!"
+
+#: email_notifications.php:148
+#, php-format
+msgid ""
+"You received this message, because you are subscribed to news about the "
+"topic %s!\n"
+"\n"
+"User %s posted proposal entitled '%s' in chosen topic:\n"
+"%s\n"
+"\n"
+"You may check the proposal by clicking on this link %s. If you wish to "
+"unfollow the topic, please login to Solis system and unsubscribe.\n"
+"\n"
+"\n"
+"Your Solis team."
+msgstr ""
+"To sporočilo ste prejeli, ker ste se naročili na prejemanje sporočil "
+"povezanih s področjem %s!\n"
+"\n"
+"Uporabnik/ca %s je podal/a predlog, z naslovom '%s', ki se glasi:\n"
+"%s\n"
+"\n"
+"Predlog si lahko ogledate s klikom na povezavo %s. Če želite prenehati "
+"prejemati obvestila v zvezi s to temo, se obiščite sistem Solis in se "
+"odjavite na prejemanje obvestil.\n"
 "\n"
 "\n"
 "Vaša ekipa sistema Solis."

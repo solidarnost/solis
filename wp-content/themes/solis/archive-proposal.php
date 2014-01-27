@@ -26,14 +26,10 @@
  */
 
 get_header(); ?>
+	<?php  $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); ?>
 
 	<section id="primary" class="content-area">
-		<div id="content" class="site-content" role="main">
-
-	<header class="page-header">
-				<h1 class="page-title">
-	<?php  $term = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) ); 
-		echo "Predlogi iz področja ". $term->name; ?>
+	<div id="subscribe_to_topic" class='entry-meta cat-links'>
 <?php
 	$current_user = wp_get_current_user();
 	if(solis_is_subscribed_topic_email($term->term_id, $current_user->ID)==true)
@@ -41,8 +37,16 @@ get_header(); ?>
 		else
 			$add_classes="notification_mail_topic_off";
 
-	echo "<span id='notification_mail_topic-".$term->term_id."' class='notification notification_mail_topic clickable $add_classes' onClick='toggle_option(".'"notification_mail_topic"'.",".$term->term_id.",$current_user->ID);'>e-opomnik</span>";
+	echo "<span id='notification_mail_topic-".$term->term_id."' class='notification notification_mail_topic clickable $add_classes' onClick='toggle_option(".'"notification_mail_topic"'.",".$term->term_id.",$current_user->ID);'>e-opomnik za področje</span>";
 ?>
+</div>
+
+
+		<div id="content" class="site-content" role="main">
+
+	<header class="page-header">
+				<h1 class="page-title">
+	<?php  	echo "Predlogi iz področja ". $term->name; ?>
 				</h1>
 			<p>
 			<?php 
