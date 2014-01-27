@@ -150,10 +150,10 @@ if( ( $post->post_status == 'publish' ) && ( $post->post_date==$post->post_modif
 User %s posted proposal entitled '%s' in chosen topic:
 %s
 
-You may check the proposal by clicking on this link %s. If you wish to unfollow the topic, please login to Solis system and unsubscribe.
+You may check the proposal by clicking on this link %s and subscribe to comments on proposal if you wish. If you want to unfollow the topic, please login to Solis system and unsubscribe.
 
 
-Your Solis team.", 'solis'),$term->name, $author->display_name, $post->post_title, apply_filters( 'the_content', $post->post_content ), esc_url(get_post_permalink($post_id)));
+Your Solis team.", 'solis'),$term->name, $author->display_name, $post->post_title, $post->post_content, esc_url(get_post_permalink($post_id)));
 		foreach($users as $user){
 //			error_log("To user: ".$user->user_email." Message: ".$message);
 			solis_send_notification($user->user_email, $subject, $message);

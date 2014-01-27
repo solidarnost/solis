@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-01-27 22:09+0100\n"
+"POT-Creation-Date: 2014-01-27 22:22+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -263,19 +263,23 @@ msgid "You are not authorised to change this setting!"
 msgstr ""
 
 #: email_notifications.php:39 email_notifications.php:49
+#: email_notifications.php:49
 msgid "Option not recognised!"
 msgstr ""
 
 #: email_notifications.php:48 email_notifications.php:58
+#: email_notifications.php:58
 msgid "You are not allowed to toggle given setting!"
 msgstr ""
 
 #: email_notifications.php:81 email_notifications.php:107
+#: email_notifications.php:107
 #, php-format
 msgid "[Solis] User %s commented on post you are watching!"
 msgstr ""
 
 #: email_notifications.php:82 email_notifications.php:108
+#: email_notifications.php:108
 #, php-format
 msgid ""
 "You received this message, because you are subscribed to news about the "
@@ -291,7 +295,7 @@ msgid ""
 "Your Solis team."
 msgstr ""
 
-#: email_notifications.php:147
+#: email_notifications.php:147 email_notifications.php:147
 #, php-format
 msgid "[Solis] User %s posted proposal on topic %s!"
 msgstr ""
@@ -307,6 +311,23 @@ msgid ""
 "\n"
 "You may check the proposal by clicking on this link %s. If you wish to "
 "unfollow the topic, please login to Solis system and unsubscribe.\n"
+"\n"
+"\n"
+"Your Solis team."
+msgstr ""
+
+#: email_notifications.php:148
+#, php-format
+msgid ""
+"You received this message, because you are subscribed to news about the "
+"topic %s!\n"
+"\n"
+"User %s posted proposal entitled '%s' in chosen topic:\n"
+"%s\n"
+"\n"
+"You may check the proposal by clicking on this link %s and subscribe to "
+"comments on proposal if you wish. If you want to unfollow the topic, please "
+"login to Solis system and unsubscribe.\n"
 "\n"
 "\n"
 "Your Solis team."
