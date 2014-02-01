@@ -33,6 +33,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 include_once("user_roles.php");
 include_once("email_notifications.php");
 
+if(function_exists('em_init')){
+include_once("events_manager_modifications.php");
+}
+
 
 add_action('init', 'solis_textdomain');
 function solis_textdomain() {

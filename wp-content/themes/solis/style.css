@@ -99,9 +99,132 @@ border-radius: 13px;
 	margin-left:5px;
 }
 
+
+
+
 .clickable{
 	cursor:pointer;
 }
+
+/* Event modifiers */
+.event-list {
+		background: #eef;
+		padding:10px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+
+}
+.event{
+	margin: 3px auto;
+	padding:5px;
+}
+
+.event-confirm {
+	display:inline-block;	
+}
+.event-when {
+	display:inline-block;
+}
+.event-info{
+	display:inline-block;
+	background: #ddd;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	padding:5px;
+	width:60%;
+}
+
+.event-confirm{
+	display: inline-block;
+}
+.event-attending-yes{
+	float:none;
+	margin:5px;
+}
+
+.event-attending-no{
+	float:none;
+	margin:5px;
+}
+
+
+.event-attending-yes_off:before, .event-attending-yes:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f463";
+	margin-right:5px;
+	margin-left:5px;
+}
+.event-attending-no_off:before, .event-attending-no:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f463";
+	margin-right:5px;
+	margin-left:5px;
+}
+
+
+
+.event-attending-yes_on:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f465";
+	margin-right:5px;
+	margin-left:5px;
+}
+.event-attending-yes_on{
+	background:#24890d;
+}
+
+.event-attending-no_on:before{
+	  font-family: 'Genericons';
+     font-style: normal;    
+     font-weight: normal;
+     height: 16px;
+     line-height: 1;
+     text-decoration: inherit;
+       font-size: 23px;
+     display: inline-block;
+     vertical-align: top;
+    width: 24px;
+    -webkit-font-smoothing: antialiased;
+	content:"\f465";
+	margin-right:5px;
+	margin-left:5px;
+}
+.event-attending-no_on{
+	background:#fe0307;
+}
+
+
+
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */
@@ -845,5 +968,4 @@ border-radius: 5px;
 .comment-reply-link {
 	display: none;
 }
-
 

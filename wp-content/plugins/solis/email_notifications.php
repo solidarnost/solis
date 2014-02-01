@@ -45,7 +45,10 @@ function solis_ajax_toggle_options() {
 			solis_subscribe_topic_email($_REQUEST['postID']	,$_REQUEST['uid']);
 			$state=1;
 		}
-	} else {
+	} elseif("event-attending"==$option_name){
+		$state=event_attending_toggle($_REQUEST['postID'], $_REQUEST['uid'], $_REQUEST['setVal']);
+	}
+	 else {
 		echo json_encode(array("success"=>false, "error"=>__("Option not recognised!", "solis")));
 		die();
 		
