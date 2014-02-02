@@ -39,10 +39,12 @@ get_header(); ?>
 							<div id="attendance" style="width:40%;margin: 0px auto;">	
 							<center><h2>Potrdite prisotnost na dogodku</h2></center>
 							<p>* Na spodnjem seznamu boste vidni šele ko boste ponovno naložili stran</p>	
+				
 							<br>
 			<?php
 				$current_user = wp_get_current_user();
 				echo "<div>".solis_attendance_getbuttons(get_the_ID(), $current_user->ID)."</div>";
+				//echo solis_event_google_link(get_the_ID());
 				echo "</div>";
 				echo "<div id='atendees' style='width:40%;margin: 0px auto;'>";
 				echo "<h3>Prisotnost so potrdili:</h3><p>";
