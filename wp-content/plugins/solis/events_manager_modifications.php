@@ -11,7 +11,6 @@ function solis_events_list_shortcode($attrs){
 	foreach($events as $event){
 
 	if($event->event_status!=1) continue;
-
 	$post_id=$event->post_id;
 	$event_name=$event->event_name;
 	$event_start_time=$event->event_start_time;
@@ -48,20 +47,35 @@ function solis_attendance_getbuttons($post_id, $user_id){
 		$nodivclass='event-attending-no_on'; 
 		$yesdivclass='';
 	}
-
+	if(solis_is_attendance_toggle_allowed($post_id)){
+		$yesdivclass=$yesdivclass." clickable";
+		$nodivclass=$nodivclass." clickable";
+		$yesonclick="toggle_option(".'"event-attending"'.",$post_id,$user_id, false,1)";
+		$noonclick="toggle_option(".'"event-attending"'.",$post_id,$user_id, false,0)";	
+	}
+	else{
+		$yesonclick="";
+		$noonclick="";
+	}
 	return "
-	<div id='event-attending-$post_id-yes' class='notification event-attending-yes clickable $yesdivclass' onClick='toggle_option(".'"event-attending"'.",$post_id,$user_id, false,1);'>pridem</div>
-	<div id='event-attending-$post_id-no' class='notification event-attending-no clickable $nodivclass' onClick='toggle_option(".'"event-attending"'.",$post_id,$user_id, false,0);'>ne pridem</div>";
-
+	<div id='event-attending-$post_id-yes' class='notification event-attending-yes $yesdivclass' onClick='$yesonclick'>pridem</div>
+	<div id='event-attending-$post_id-no' class='notification event-attending-no $nodivclass' onClick='$noonclick'>ne pridem</div>";
 
 }
 
+function solis_is_attendance_toggle_allowed($post_id){
+
+	$event=new EM_Event($post_id, 'post_id');
+	$timeEvent=strtotime($event->event_start_date." ".$event->event_start_time);
+	$now=strtotime(current_time("mysql"));
+	if($now<$timeEvent) return true;
+	else return false;
+}
 
 
 function event_attending_toggle($post_id, $uid, $setval){
-
+	if(!solis_is_attendance_toggle_allowed($post_id)) return $setval;
 	$subscribed=solis_is_attending_event($post_id,$uid);
-
 	if(($subscribed==1 && $setval==1) || ($subscribed==0 && $setval==0)) return $subscribed;
 
 	if($setval==1){
@@ -105,3 +119,15 @@ function solis_dont_attend_event($post_id, $user_id){
 
 
 // TODO: Attendance list!
+
+function solis_event_attendees($post_id, $type=true){
+		if($type) $retval=get_post_meta($post_id,'_solis_user_attending_event');
+		else $retval=get_post_meta($post_id,'_solis_user_not_attending_event');
+		echo "<ul>";
+		foreach($retval as $user_id){
+		 $udata=get_userdata( $user_id );
+		echo "<li>".$udata->display_name."</li>";
+		}
+		echo "</ul>";
+
+}

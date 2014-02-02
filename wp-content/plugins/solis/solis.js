@@ -63,19 +63,36 @@ jQuery.ajax({
   }
 
 
-function toggle_option(option_name, post_id, user_id){
+function toggle_option(option_name, post_id, user_id, single_toggle, set_value){
+	if(typeof(single_toggle)==='undefined') single_toggle=true;
+	if(typeof(single_toggle)==='undefined') set_value=0;
 jQuery.ajax({
          type : "get",
          dataType : "json",
          url : solisAjax.ajaxurl,
-         data : {action: "solis_toggle_option", optionName:option_name, postID: post_id, uid:user_id},
+         data : {action: "solis_toggle_option", optionName:option_name, postID: post_id, uid:user_id, setVal:set_value},
 	cache: false,
          success: function(response) {
 		if(response.success==true){
-			if(response.state==1){
-				jQuery("#"+option_name+"-"+post_id).addClass("notification_set").addClass(option_name+"_on").removeClass(option_name+"_off");
+			if(single_toggle==true){
+				if(response.state==1){
+					jQuery("#"+option_name+"-"+post_id).addClass("notification_set").addClass(option_name+"_on").removeClass(option_name+"_off");
+				} else {
+					jQuery("#"+option_name+"-"+post_id).removeClass("notification_set").addClass(option_name+"_off").removeClass(option_name+"_on");
+				}
 			} else {
-				jQuery("#"+option_name+"-"+post_id).removeClass("notification_set").addClass(option_name+"_off").removeClass(option_name+"_on");
+				if(response.state==1){
+					jQuery("#"+option_name+"-"+post_id+"-yes").addClass(option_name+"-yes_on").removeClass(option_name+"-yes_off");
+					jQuery("#"+option_name+"-"+post_id+"-no").addClass(option_name+"-no_off").removeClass(option_name+"-no_on");
+				} else if(response.state==0) {
+					jQuery("#"+option_name+"-"+post_id+"-yes").addClass(option_name+"-yes_off").removeClass(option_name+"-yes_on");				
+					jQuery("#"+option_name+"-"+post_id+"-no").addClass(option_name+"-no_on").removeClass(option_name+"-no_off");
+				} else {
+					jQuery("#"+option_name+"-"+post_id+"-yes").addClass(option_name+"-yes_off").removeClass(option_name+"-yes_on");				
+					jQuery("#"+option_name+"-"+post_id+"-no").addClass(option_name+"-no_off").removeClass(option_name+"-no_on");
+				}
+
+
 			}
 		} else {
 			alert("Error: "+response.error);
