@@ -359,6 +359,104 @@ color: #744;
 content: '\f307';
 }
 
+/* Calendar theme */
+
+.fullcalendar td.eventless
+.fullcalendar td.eventful  > a {
+	background-color: #21759b;
+}
+
+.fullcalendar td {
+	width: 14.3%;
+	border: 1px solid #d2d2d2;
+	border-top: 0;
+	-webkit-transition: all .2s cubic-bezier(0.550, 0.085, 0.680, 0.530); 
+  	   -moz-transition: all .2s cubic-bezier(0.550, 0.085, 0.680, 0.530); 
+        -ms-transition: all .2s cubic-bezier(0.550, 0.085, 0.680, 0.530); 
+         -o-transition: all .2s cubic-bezier(0.550, 0.085, 0.680, 0.530); 
+	        transition: all .2s cubic-bezier(0.550, 0.085, 0.680, 0.530);
+}
+
+.fullcalendar td:hover{
+	background: #f7f7f7;
+	-webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 10px;
+			box-shadow: rgba(0,0,0, 0.2) 0px 0px 10px;	
+
+}
+
+.fullcalendar td.eventless-pre, td.eventful-pre{
+	background: #fff;
+	color: #000;
+}
+
+.fullcalendar .eventless-pre:hover{
+		-webkit-box-shadow: none;
+			box-shadow: none;
+}
+
+table.fullcalendar {
+	border-bottom: 1px solid #d2d2d2;
+	border-top: 5px solid #000;
+}
+.fullcalendar, 
+.fullcalendar  a {
+	background-color: #b2b2b2;
+	color: #fff;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+
+.fullcalendar  a:hover{
+	color:#666;	
+}
+
+/*
+.fullcalendar td.tribe-events-past 
+.fullcalendar td.tribe-events-past  > a {
+	background-color: #e0e0e0;
+	color: #fff;
+}
+*/
+.fullcalendar td.tribe-events-past .tribe-events-month-event-title a, 
+.fullcalendar td.tribe-events-past .tribe-events-viewmore a {
+	opacity: .5;
+	filter:Alpha(opacity=50);
+}
+
+/* part 2 of cal */
+.events-archive.events-gridview #tribe-events-content table .vevent {
+	border-bottom: 1px solid #e0e0e0;
+}
+.events-archive.events-gridview #tribe-events-content table .tribe-events-last {
+	border-bottom: 0;
+}
+.fullcalendar thead th {
+	background-color: #666;
+	color: #fff;
+	font-weight: bold;
+	letter-spacing: 0;
+	padding: 1em 0;
+	border-left: 1px solid #666;
+	border-right: 1px solid #666;
+}
+.fullcalendar tr {
+	height:80px;
+}
+/*.fullcalendar td  {
+	padding: 4px 9px 6px;
+	width: 14.3%;
+	-webkit-box-shadow: rgba(0,0,0, 0.2) 0px 0px 10px;
+	-moz-border-radius: 4px; 
+	border-radius: 4px;
+	box-shadow: rgba(0,0,0, 0.2) 0px 0px 10px;
+
+} */
+
+.fullcalendar tr.days-names{
+	height: auto;
+}
+
 
 /* =Theme customization starts here
 -------------------------------------------------------------- */

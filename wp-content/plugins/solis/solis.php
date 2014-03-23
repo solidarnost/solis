@@ -898,6 +898,7 @@ function solis_add_user_menu() {
 	add_users_page(__('Basic CSV import', 'solis'), __('Basic CSV import', 'solis'), 'create_users', 'solis-add-user', 'solis_add_user_menu_page');
 }
 
+// TODO: make improvements in adding users for this CSV.
 function solis_add_user_menu_page(){
 if ( !current_user_can( 'create_users' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
@@ -911,14 +912,37 @@ if ( !current_user_can( 'create_users' ) )  {
 	check_admin_referer( 'solis-csv-nonce' );
  	$vsebina=file($_FILES['CSVfile']['tmp_name']);
 	foreach($vsebina as $linija){
-		$ex=explode(",",trim(mb_convert_encoding($linija,"UTF-8","auto"),',;.\n"'));
-		$name=$ex[0];
-		$last_name=$ex[1];
-		$email=$ex[2];
-		$success=solis_import_user($email, $name, $last_name, $email);
+		$ex=explode(";",trim(mb_convert_encoding($linija,"UTF-8","auto"),',;.\n"'));
+		$user_basicdata=array(
+			'first_name'=>$ex[1],
+			'last_name'=>$ex[2],
+			'email'=>$ex[10],
+			'username'=>$ex[10] //username is the same as email by default
+		);
+		$user_metadata=array(
+			'member_id'=>$ex[0],
+			'birthdate'=>$ex[5],
+			'address'=>$ex[6],
+			'postcode'=>trim(substr($ex[7],0,strpos($ex[7], ' '))),
+			'postname'=>trim(substr($ex[7],strpos($ex[7], ' '))),
+			'municipality'=>$ex[8],
+			'voting_unit'=>$ex[9],
+			'gsm'=>$ex[11],
+			'phone'=>$ex[12],
+			'occupation'=>$ex[14],
+			'employer'=>$ex[15],
+			'notifications'=>1,
+			'signed'=>1,
+			'enableduser'=>1
+		);
+		$user_tags=array(
+			'solcomp'=>$ex[16],
+			'soledu'=>$ex[13]
+		);
+		$success=solis_import_user($user_basicdata, $user_metadata, $user_tags);
 	}
 ?>
-   <div id='message' class='updated fade'><p><strong>Uspešno ste dodali novega uporabnika.</strong></p></div>
+   <div id='message' class='updated fade'><p><strong>Uspešno ste uvozili seznam uporabnikov sistema Solis.</strong></p></div>
 <?php 
 	die();
   } ?>
@@ -943,31 +967,80 @@ function solis_CSV_basic_draw_form(){
 }
 
 
-function solis_import_user($username, $name, $last_name, $email){
-	$user_id = username_exists( $username );
+function solis_import_user($basicdata, $metadata, $taxonomies){
+	error_log("Vstavljam uporabnika ".$basicdata['username']. " ".$basicdata['email']."\n");
+	$user_id = username_exists( $basicdata['username'] );
 	if ( !$user_id and email_exists($email) == false ) {
 		$random_password = wp_generate_password( $length=8, $include_standard_special_chars=false );
+
 		$userdata = array(
 			'user_pass' => $random_password,
-			'user_login' => $username,
-			'first_name' => $name,
-			'last_name' => $last_name,
-			'user_email' => $email
+			'user_login' => $basicdata['username'],
+			'first_name' => $basicdata['first_name'],
+			'last_name' => $basicdata['last_name'],
+			'user_email' => $basicdata['email'],
+			'role' => 'proposal_author'
 		);
+
 		$user_id = wp_insert_user( $userdata ) ;
 		if(is_wp_error($user_id)) {
-	//		echo "cannot add".  $user_name;
+// User is not added so, no metadata will be added to it!
 			return false;
 		} else {
-//		add_user_data($user_id, "nologin", 1);
-			solis_notify_user( $userdata );
+// Add metadata
+		solis_save_user_taxonomies($user_id, $taxonomies);
+			foreach($metadata as $key=>$value){
+				update_user_meta($user_id, $key, $value);
+			}
+// TODO: enable user notification
+		//	solis_notify_user( $userdata );
 			return true;
 		}
 		
 	} else {
-//		echo "fail";
-		return false;
+//just update data!
+		solis_save_user_taxonomies($user_id, $taxonomies);
+		foreach($metadata as $key=>$value){
+			update_user_meta($user_id, $key, $value);
+		}
+// Sucess, but no new user.
+		return true;
 	}
+}
+
+
+
+function solis_save_user_taxonomies( $user_id, $taxonomies ) {
+	/* Make sure the current user can edit the user and assign terms before proceeding. */
+	if ( !current_user_can('edit_user', $user_id) )
+		return false;
+
+	foreach($taxonomies as $taxonomy=>$value){
+		/* Sets the terms (we're just using a single term) for the user. */
+		$tax_slug_arr=solis_build_tax_slug_array($taxonomy,$value);
+		error_log(json_encode($tax_slug_arr)." into ".$taxonomy);
+		wp_set_object_terms( $user_id, $tax_slug_arr, $taxonomy, false);
+	//	clean_object_term_cache( $user_id, $taxonomy );
+	}
+}
+
+
+function solis_build_tax_slug_array($taxonomy,$value){
+	$values=explode(',',$value);
+	$retval=array();
+	foreach($values as $taxval){
+		$taxslug=sanitize_title(trim($taxval));
+		$valid=term_exists($taxslug, $taxonomy);
+		if($termid!==0 && $valid!==null){
+			array_push($retval,$taxslug);
+		}
+		else
+		{
+			wp_insert_term(trim($taxval),$taxonomy,array('slug'=>$taxslug));
+			array_push($retval,$taxslug);
+		}
+	}
+	return $retval;
 }
 
 function solis_notify_user($userdata){
