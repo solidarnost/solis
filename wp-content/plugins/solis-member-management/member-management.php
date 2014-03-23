@@ -14,8 +14,10 @@ include_once( 'user-taxonomies/user-taxonomies.php' );
 
 
 function register_taxonomies(){
-register_taxonomy('solfunc', 'user', array(
+register_taxonomy('solfunc', array('user'), array(
         'public'                =>true,
+	'hierarchical'	=>true,
+  	'show_ui' => true,
         'labels'                =>array(
                 'name'                                          =>'Vloga v stranki',
                 'singular_name'                         =>'Vloga v stranki',
@@ -43,8 +45,10 @@ register_taxonomy('solfunc', 'user', array(
         ),
 ));
 // Workgroups
-register_taxonomy('solwg', 'user', array(
+register_taxonomy('solwg', array('user'), array(
         'public'                =>true,
+	'hierarchical'	=>true,
+  	'show_ui' => true,
         'labels'                =>array(
                 'name'                                          =>'Delovne skupine',
                 'singular_name'                         =>'Delovna skupina',
@@ -75,6 +79,7 @@ register_taxonomy('solwg', 'user', array(
 register_taxonomy('solcomp', 'user', array(
         'public'                =>true,
 	'hierarchical'	=>true,
+  	'show_ui' => true,
         'labels'                =>array(
                 'name'                                          =>'Kompetence',
                 'singular_name'                         =>'Kompetenca',
@@ -108,6 +113,7 @@ register_taxonomy('soledu', 'user', array(
         'public'                =>true,
 	'hierarchical'	=>true,
 	'show_tagcloud' => true,
+  	'show_ui' => true,
         'labels'                =>array(
                 'name'                                          =>'Izobrazba',
                 'singular_name'                         =>'Izobrazba',
@@ -229,6 +235,13 @@ if ( !current_user_can( 'create_users' ) )  {
 	<br>
 <?php
 solis_add_user_draw_form();
+if(isset($_GET['action']) && $_GET['action']=='edit_user'){
+	echo "<script>jQuery('document').ready(function() {
+			//alert('ready');
+			solis_fill_in_form(".$_GET['user'].");
+			
+	});</script>";
+}
 echo "</div>";
 }
 
@@ -437,4 +450,16 @@ function solis_update_education_count( $terms, $taxonomy ) {
 	}
 }
 
+
+
+/** Function adds user edit link to the user manager. */
+function solis_user_action_links($actions, $user_object) {
+	//unset($actions['edit']);
+	unset($actions['bookings']);
+	if( current_user_can( 'edit_users' ) ){
+	$actions['edit'] = "<a class='solis_edit_badges' href='" . admin_url( "users.php?page=solis-add-usermanager&action=edit_user&amp;user=$user_object->ID") . "'>" . __( 'View/Edit user data', 'solis' ) . "</a>";
+	}
+	return $actions;
+}
+add_filter('user_row_actions', 'solis_user_action_links', 10, 2);
 ?>

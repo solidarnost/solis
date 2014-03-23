@@ -33,6 +33,8 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 include_once("user_roles.php");
 include_once("email_notifications.php");
 
+include_once("messaging.php");
+
 if(function_exists('em_init')){
 include_once("events_manager_modifications.php");
 }
